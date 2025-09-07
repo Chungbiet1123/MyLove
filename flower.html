@@ -315,13 +315,19 @@
   </div>
 
   <!-- Title -->
-  <h1 class="title"><span id="title"></span></h1>
-  <audio id="bgMusic" autoplay loop>
+<h1 class="title"><span id="title"></span></h1>
+
+<!-- Nhạc -->
+<audio id="bgMusic" controls autoplay>
   <source src="Music\[OST Thưa Mẹ Con Đi  Goodbye Mother] Cảm Ơn Và Xin Lỗi - Chillies.mp3" type="audio/mpeg">
-  </audio>
-</body>
+</audio>
 
-</html>
+<!-- Lyrics -->
+<div id="lyrics-box">
+  <ul id="lyrics"></ul>
+</div>
 
-<!-- Import Javascript -->
+<!-- Import Javascript (đặt ngay trước thẻ đóng body) -->
 <script src="js/main.js"></script>
+</body>
+</html>
