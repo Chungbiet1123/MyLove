@@ -799,7 +799,6 @@ body {
   height: 50vmin;
   border-top-left-radius: 100%;
   border-left: 2vmin solid #fff;
-  -webkit-mask-image: linear-gradient(to top, transparent 25%, #fff 50%);
   mask-image: linear-gradient(to top, transparent 25%, #fff 50%);
   position: relative;
   z-index: 1;
