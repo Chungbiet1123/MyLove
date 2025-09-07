@@ -1,22 +1,21 @@
 const title = document.querySelector('.title')
-const text = `I Have Something`.split('')
+const text = "Em có bất ngờ này cho anh";
 
-// Create container for better responsive layout
-title.style.display = 'flex'
-title.style.flexWrap = 'wrap'
-title.style.justifyContent = 'center'
-title.style.gap = '0.5rem'
+// Sử dụng Segmenter để tách ký tự có dấu đầy đủ
+const segmenter = new Intl.Segmenter('vi', { granularity: 'grapheme' });
+const characters = [...segmenter.segment(text)].map(s => s.segment);
 
-for (let index = 0; index < text.length; index++) {
-  if (text[index] !== ' ') {
-    title.innerHTML += `<span>${text[index]}</span>`
+// Tạo span cho từng ký tự
+characters.forEach(char => {
+  if (char !== ' ') {
+    title.innerHTML += `<span>${char}</span>`;
   } else {
-    title.innerHTML += `<span style='width: 1rem'></span>`
+    title.innerHTML += `<span style="width: 1rem"></span>`;
   }
-}
+});
 
+// Set delay dần từ trái sang phải
 const textElements = document.querySelectorAll('.title span');
-textElements.forEach((element) => {
-  const randomDelay = Math.random() * 3;
-  element.style.animationDelay = `${randomDelay}s`;
+textElements.forEach((element, index) => {
+  element.style.setProperty('--delay', `${index * 0.1}s`);
 });

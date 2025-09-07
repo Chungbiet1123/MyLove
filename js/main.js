@@ -1,22 +1,24 @@
-
 onload = () => {
-  const c = setTimeout(() => {
+  setTimeout(() => {
+    // bỏ pause để chạy animation
     document.body.classList.remove("not-loaded");
 
-    const titles = ('I LOVE U').split('')
-    const titleElement = document.getElementById('title');
-    let index = 0;
+    const text = "EM YÊU ANH"; // đổi sang tiếng Việt ok
+    const titleElement = document.getElementById("title");
 
-    function appendTitle() {
-      if (index < titles.length) {
-        titleElement.innerHTML += titles[index];
-        index++;
-        setTimeout(appendTitle, 300); // 1000ms delay
+    // Dùng Intl.Segmenter để không bị tách dấu tiếng Việt
+    const segmenter = new Intl.Segmenter("vi", { granularity: "grapheme" });
+    const characters = [...segmenter.segment(text)].map(seg => seg.segment);
+
+    characters.forEach((char, index) => {
+      if (char !== " ") {
+        const span = document.createElement("span");
+        span.textContent = char;
+        span.style.setProperty("--delay", `${index * 0.15}s`);
+        titleElement.appendChild(span);
+      } else {
+        titleElement.appendChild(document.createTextNode(" "));
       }
-    }
-
-    appendTitle();
-
-    clearTimeout(c);
+    });
   }, 1000);
 };

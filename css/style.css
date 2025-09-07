@@ -1213,4 +1213,19 @@ body {
   animation-play-state: paused !important;
 }
 
+.title span {
+  opacity: 0;
+  transform: translateX(-20px);
+  display: inline-block;
+  animation: reveal 0.4s forwards;
+  animation-delay: var(--delay);
+}
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
