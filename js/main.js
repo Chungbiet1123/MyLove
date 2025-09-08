@@ -3,7 +3,7 @@ onload = () => {
   setTimeout(() => {
     document.body.classList.remove("not-loaded"); 
 
-    const text = "GỬI ANH";
+    const text = "TC";
     const titleElement = document.getElementById("title");
 
     const segmenter = new Intl.Segmenter("vi", { granularity: "grapheme" });
