@@ -55,6 +55,15 @@ onload = () => {
     const liElements = lyricsElement.querySelectorAll("li");
     let lastIndex = -1;
     let intervalId = null;
+    let musicStarted = false;
+
+    // 🔹 Bật nhạc khi click bất kỳ đâu
+    document.body.addEventListener("click", () => {
+      if (!musicStarted) {
+        audio.play().catch(err => console.log("Không thể phát nhạc:", err));
+        musicStarted = true;
+      }
+    });
 
     audio.ontimeupdate = () => {
       const currentTime = audio.currentTime;
@@ -75,7 +84,7 @@ onload = () => {
         const segmenter = new Intl.Segmenter("vi", { granularity: "grapheme" });
         const chars = [...segmenter.segment(lyrics[i].text)].map(seg => seg.segment);
 
-        // Tính nửa dòng, kéo tới khoảng trắng tiếp theo nếu không phải là khoảng trắng
+        // Chia nửa dòng, kéo tới khoảng trắng nếu cần
         let half = Math.ceil(chars.length / 2);
         while (half < chars.length && chars[half] !== " ") {
           half++;
