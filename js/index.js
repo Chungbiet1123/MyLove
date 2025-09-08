@@ -1,5 +1,5 @@
 const title = document.querySelector('.title')
-const text = "Em có bất ngờ này cho anh";
+const text = "Gửi Anh";
 
 // Sử dụng Segmenter để tách ký tự có dấu đầy đủ
 const segmenter = new Intl.Segmenter('vi', { granularity: 'grapheme' });
